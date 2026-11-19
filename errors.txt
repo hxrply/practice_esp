@@ -1,0 +1,52 @@
+ERRORS FOUND IN task_2_practice_1.py
+====================================
+
+ERRORS THAT STOP THE PROGRAM RUNNING
+------------------------------------
+1. Line 126 - The final print(...) is missing its closing bracket ")".
+   This is a SyntaxError, so nothing runs.
+
+2. Line 29 / Line 97 - The function is defined as get_target_weght (typo)
+   but called as get_target_weight. This causes a NameError.
+
+3. Line 62 / Line 99 - recommended_weight_loss_rate only takes
+   starting_weight, but main() passes two arguments. It also uses
+   "injured", which is not defined inside the function.
+   Fix: def recommended_weight_loss_rate(starting_weight, injured):
+
+4. Line 53 - injury[1] takes the SECOND letter, so "Yes" becomes "E" and
+   every answer is rejected. Should be injury[0]. An empty input would
+   also crash with an IndexError.
+
+LOGIC ERRORS (RUNS BUT GIVES WRONG RESULTS)
+-------------------------------------------
+5. Line 7 - name.isdigit() only accepts names made entirely of numbers.
+   Should be name.isalpha(). Note isalpha() rejects spaces, so
+   "John Smith" would fail - name.replace(" ", "").isalpha() allows them.
+
+6. Line 107 - target_weight - starting_weight gives a negative number.
+   Should be starting_weight - target_weight.
+
+7. Line 40 - ">= 150" rejects exactly 150 kg, but the message says 150 is
+   the maximum. Use "> 150".
+
+8. Lines 65 / 67 - The rates look swapped: an injured athlete gets the
+   higher rate (5%) and an uninjured athlete gets 1%. Check against the brief.
+
+9. Line 89 - Entering 0 weeks causes a ZeroDivisionError, and negative
+   weeks are accepted. Add a check that weeks is greater than 0.
+
+10. get_start_weight (lines 15-26) - Accepts any number, including 0 or
+    negative weights, while the target weight has a 45-150 kg range.
+
+STYLE POINTS (NOT ERRORS, BUT WORTH TIDYING)
+--------------------------------------------
+- Lines 23, 37, 82 - Bare "except:" blocks. Use "except ValueError:".
+- Lines 16, 30 - "valid" is set but never used in the weight functions,
+  because they return directly.
+- Lines 58, 85-86 - Inconsistent indentation (13 and 11 spaces instead of
+  multiples of 4).
+- Lines 74, 94 - Stray space before the brackets in
+  "calc_weightloss_rate_needed (" and "main ()".
+
+Fix errors 1-4 first so the program runs, then 5-10 so the output is correct.
